@@ -10,6 +10,7 @@ public class SimpleFirstPersonController : MonoBehaviour
     [Header("Bewegung")]
     public float moveSpeed = 4f;
     public float gravity = -9.81f;
+    public float jumpHeight = 1.2f;
 
     [Header("Maus")]
     public float mouseSensitivity = 2f;
@@ -41,8 +42,10 @@ public class SimpleFirstPersonController : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         Vector3 move = (transform.right * h + transform.forward * v) * moveSpeed;
 
-        // Schwerkraft, damit man am Boden bleibt
+        // Schwerkraft und Springen
         if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
+        if (controller.isGrounded && Input.GetButtonDown("Jump"))
+            verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         verticalVelocity += gravity * Time.deltaTime;
         move.y = verticalVelocity;
 
