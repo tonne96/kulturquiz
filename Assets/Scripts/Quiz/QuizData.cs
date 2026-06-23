@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 
-/// <summary>
 /// Entspricht der JSON-Antwort von https://opentdb.com/api.php
 /// Wichtig: JsonUtility matcht Feldnamen exakt -> deshalb snake_case wie im JSON.
-/// </summary>
 [Serializable]
 public class TriviaResponse
 {

@@ -1,10 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
 /// Steuert den Quiz-Ablauf. Startet NICHT mehr automatisch, sondern erst über
 /// StartQuiz(category) – z.B. wenn der Spieler einen NPC anspricht.
-/// </summary>
 [RequireComponent(typeof(OpenTriviaClient))]
 public class QuizManager : MonoBehaviour
 {

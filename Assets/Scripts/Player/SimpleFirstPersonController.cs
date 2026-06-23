@@ -1,9 +1,9 @@
 using UnityEngine;
 
-/// <summary>
+
 /// Einfache Ego-Perspektive: WASD zum Laufen, Maus zum Umsehen.
 /// Kommt auf den Spieler (mit CharacterController). Die Kamera ist ein Kind-Objekt.
-/// </summary>
+
 [RequireComponent(typeof(CharacterController))]
 public class SimpleFirstPersonController : MonoBehaviour
 {

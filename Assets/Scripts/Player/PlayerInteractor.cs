@@ -1,11 +1,11 @@
 using UnityEngine;
 using TMPro;
 
-/// <summary>
+
 /// Kommt auf den Spieler. Findet den nächsten NPC in Reichweite, zeigt einen Hinweis
 /// ("[E] sprechen") und startet bei Tastendruck dessen Quiz. Während des Quiz wird die
 /// Bewegung gesperrt und der Mauszeiger freigegeben.
-/// </summary>
+/// 
 public class PlayerInteractor : MonoBehaviour
 {
     [Header("Referenzen")]

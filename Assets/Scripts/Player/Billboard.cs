@@ -1,9 +1,9 @@
 using UnityEngine;
 
-/// <summary>
-/// Dreht dieses Objekt immer zur Kamera, damit ein schwebender Text aus jeder
-/// Richtung lesbar bleibt. Kommt auf den schwebenden Text bzw. dessen Canvas.
-/// </summary>
+ 
+// Dreht dieses Objekt immer zur Kamera, damit ein schwebender Text aus jeder
+// Richtung lesbar bleibt. Kommt auf den schwebenden Text bzw. dessen Canvas.
+
 public class Billboard : MonoBehaviour
 {
     private Camera cam;

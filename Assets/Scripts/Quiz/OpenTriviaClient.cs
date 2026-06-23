@@ -3,10 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-/// <summary>
 /// Holt Fragen von der Open Trivia Database (opentdb.com).
 /// Nutzt UnityWebRequest in Coroutines mit Callbacks.
-/// </summary>
 public class OpenTriviaClient : MonoBehaviour
 {
     private const string ApiUrl = "https://opentdb.com/api.php";
