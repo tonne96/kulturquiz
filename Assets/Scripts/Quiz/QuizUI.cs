@@ -3,10 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
 /// Zeigt das Quiz-Fenster, Fragen und Antwort-Buttons. Wird über BeginQuiz(category)
 /// eingeblendet und meldet sich per OnQuizClosed wieder ab (damit der Spieler weiterlaufen darf).
-/// </summary>
 public class QuizUI : MonoBehaviour
 {
     [Header("Referenzen")]
