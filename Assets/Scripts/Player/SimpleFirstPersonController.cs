@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// Einfache Ego-Perspektive: WASD zum Laufen, Maus zum Umsehen.
@@ -28,7 +29,16 @@ public class SimpleFirstPersonController : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+        
+        // Return to scene 0 when Escape is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {   
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene(0);
+            return; // Optional: stop processing the rest of Update this frame
+        }
         // Umsehen
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
