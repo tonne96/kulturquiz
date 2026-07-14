@@ -39,7 +39,7 @@
 
 #VSCode directory
 .vscode/
-
+.vsconfig/
 
 # Gradle cache directory
 .gradle/
