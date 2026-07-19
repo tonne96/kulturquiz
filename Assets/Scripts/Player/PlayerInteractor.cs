@@ -21,6 +21,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private NPCQuizGiver currentTarget;
     private bool quizActive;
+    public bool IsQuizActive => quizActive;
 
     private void Start()
     {
@@ -70,6 +71,7 @@ public class PlayerInteractor : MonoBehaviour
     private void BeginQuiz()
     {
         quizActive = true;
+        MinimapUI.QuizActive = true;
         if (interactPrompt != null) interactPrompt.SetActive(false);
         if (movementController != null) movementController.enabled = false;
         LockCursor(false);
@@ -79,6 +81,7 @@ public class PlayerInteractor : MonoBehaviour
     private void EndQuiz()
     {
         quizActive = false;
+        MinimapUI.QuizActive = false;
         if (movementController != null) movementController.enabled = true;
         LockCursor(true);
     }

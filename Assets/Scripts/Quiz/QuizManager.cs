@@ -86,15 +86,12 @@ public class QuizManager : MonoBehaviour
         bool correct = answer == q.correct_answer;
         if (correct)
         {
-            // Counts correct answers in this quiz
             score++;
-
-            // Adds permanent/game score
-            GameScoreManager.Instance.AddQuestionScore(q.difficulty);
+            GameScoreManager.Instance?.AddQuestionScore(q.difficulty);
         }
         else
         {
-            GameScoreManager.Instance.ResetStreak();
+            GameScoreManager.Instance?.ResetStreak();
         }
         return correct;
     }

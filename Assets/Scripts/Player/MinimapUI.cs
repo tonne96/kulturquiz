@@ -28,6 +28,7 @@ public class MinimapUI : MonoBehaviour
     private Texture2D _npcTex;
 
     private NPCQuizGiver[] _npcs;
+    public static bool QuizActive = false;
 
     private GUIStyle _hudStyle;
     private GUIStyle _streakStyle;
@@ -71,6 +72,9 @@ public class MinimapUI : MonoBehaviour
 
     private void OnGUI()
     {
+        if (QuizActive)
+            return;
+
         if (!_stylesInitialized)
             InitializeGUIStyles();
 
@@ -104,6 +108,11 @@ public class MinimapUI : MonoBehaviour
 
             _streakStyle.normal.textColor = streakColor;
 
+
+            GUI.Label(
+                new Rect(x, y - 125, mapSize, 25),
+                $"Best Score: {GameScoreManager.Instance.HighScore}",
+                _hudStyle);
 
             GUI.Label(
                 new Rect(x, y - 95, mapSize, 25),

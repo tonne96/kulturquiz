@@ -1,67 +1,76 @@
 using UnityEngine;
 
 // Auf das Auto-Root-GameObject legen.
-// Das Auto fährt von startPoint zu endPoint, verschwindet und startet neu.
+// Das Auto fährt eine Waypoint-Route ab (z.B. als Quadrat/Rechteck).
 public class CarDriver : MonoBehaviour
 {
-    [Header("Strecke")]
-    public Vector3 startPoint;
-    public Vector3 endPoint;
+    [Header("Route")]
+    public Transform[] waypoints;   // Im Inspector befüllen — mind. 2 Punkte
+    public bool loop = true;
 
     [Header("Fahrt")]
     public float speed = 8f;
-    [Tooltip("Zufällige Startversetzung entlang der Strecke (0–1), damit Autos nicht alle gleichzeitig starten")]
-    [Range(0f, 1f)]
-    public float startOffset = 0f;
+    [Range(0, 10)]
+    [Tooltip("Bei welchem Waypoint das Auto startet")]
+    public int startWaypointIndex = 0;
 
     [Header("Räder (optional)")]
     public Transform wheelFL;
     public Transform wheelFR;
     public Transform wheelRL;
     public Transform wheelRR;
-    [Tooltip("Radius eines Rades in World Units")]
     public float wheelRadius = 0.35f;
 
-    private float _progress;   // 0 = Start, 1 = Ende
-    private float _totalLength;
+    private int _current;
+    private int _next;
 
     private void Start()
     {
-        _totalLength = Vector3.Distance(startPoint, endPoint);
-        _progress = startOffset;
-        PlaceCar();
+        if (waypoints == null || waypoints.Length < 2) return;
 
-        // Fahrtrichtung einmalig ausrichten
-        if (_totalLength > 0.001f)
-            transform.forward = (endPoint - startPoint).normalized;
+        _current = startWaypointIndex % waypoints.Length;
+        _next = (_current + 1) % waypoints.Length;
+
+        transform.position = waypoints[_current].position;
+        transform.forward = (waypoints[_next].position - waypoints[_current].position).normalized;
     }
 
     private void Update()
     {
-        if (_totalLength < 0.001f) return;
+        if (waypoints == null || waypoints.Length < 2) return;
 
-        _progress += speed * Time.deltaTime / _totalLength;
+        Vector3 target = waypoints[_next].position;
+        Vector3 dir = (target - transform.position);
 
-        if (_progress >= 1f)
+        float step = speed * Time.deltaTime;
+
+        if (dir.magnitude <= step)
         {
-            _progress = 0f;
+            // Waypoint erreicht → weiter zum nächsten
+            transform.position = target;
+            _current = _next;
+            _next = (_current + 1) % waypoints.Length;
+
+            if (!loop && _next == 0)
+            {
+                enabled = false;
+                return;
+            }
+
+            transform.forward = (waypoints[_next].position - transform.position).normalized;
+        }
+        else
+        {
+            transform.position += dir.normalized * step;
+            transform.forward = dir.normalized;
         }
 
-        PlaceCar();
         SpinWheels();
-    }
-
-    private void PlaceCar()
-    {
-        transform.position = Vector3.Lerp(startPoint, endPoint, _progress);
     }
 
     private void SpinWheels()
     {
-        // Bogenlänge pro Frame → Winkel = arc / radius (in Grad)
-        float distPerFrame = speed * Time.deltaTime;
-        float angleDeg = (distPerFrame / wheelRadius) * Mathf.Rad2Deg;
-
+        float angleDeg = (speed * Time.deltaTime / wheelRadius) * Mathf.Rad2Deg;
         RotateWheel(wheelFL, angleDeg);
         RotateWheel(wheelFR, angleDeg);
         RotateWheel(wheelRL, angleDeg);
@@ -74,14 +83,18 @@ public class CarDriver : MonoBehaviour
             wheel.Rotate(Vector3.right, angleDeg, Space.Self);
     }
 
-    // Gizmos: Start/End als Kugeln + Linie in der Scene-View anzeigen
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(startPoint, 0.4f);
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(endPoint, 0.4f);
+        if (waypoints == null || waypoints.Length < 2) return;
+
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(startPoint, endPoint);
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            if (waypoints[i] == null) continue;
+            int next = (i + 1) % waypoints.Length;
+            if (waypoints[next] == null) continue;
+            Gizmos.DrawLine(waypoints[i].position, waypoints[next].position);
+            Gizmos.DrawSphere(waypoints[i].position, 0.4f);
+        }
     }
 }
