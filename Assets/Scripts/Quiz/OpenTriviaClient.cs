@@ -69,10 +69,10 @@ public class OpenTriviaClient : MonoBehaviour
         int category = 0,
         string difficulty = null,
         string type = null)
-    {
+    {   
         string url = $"{ApiUrl}?amount={amount}";
         if (category > 0)                       url += $"&category={category}";
-        if (!string.IsNullOrEmpty(difficulty))  url += $"&difficulty={difficulty}";
+        if (!string.IsNullOrEmpty(difficulty))  url += $"&difficulty={GameSettings.Difficulty}";
         if (!string.IsNullOrEmpty(type))        url += $"&type={type}";
         if (!string.IsNullOrEmpty(sessionToken)) url += $"&token={sessionToken}";
 

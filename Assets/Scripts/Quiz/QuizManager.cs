@@ -8,7 +8,7 @@ public class QuizManager : MonoBehaviour
 {
     [Header("Quiz-Einstellungen")]
     public int questionAmount = 5;
-    public string difficulty = null;   // "easy" / "medium" / "hard" / null
+    //public string difficulty = GameSettings.Difficulty;   // "easy" / "medium" / "hard" / null |  Abfrage wird direkt aus dem Slider abgelesen
     public string type = "multiple";   // "multiple" / "boolean" / null
 
     // Events für die UI
@@ -60,7 +60,7 @@ public class QuizManager : MonoBehaviour
                 OnError?.Invoke(err);
             },
             category: category,
-            difficulty: difficulty,
+            difficulty: GameSettings.Difficulty,
             type: type
         );
     }
