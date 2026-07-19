@@ -84,7 +84,18 @@ public class QuizManager : MonoBehaviour
         if (q == null) return false;
 
         bool correct = answer == q.correct_answer;
-        if (correct) score++;
+        if (correct)
+        {
+            // Counts correct answers in this quiz
+            score++;
+
+            // Adds permanent/game score
+            GameScoreManager.Instance.AddQuestionScore(q.difficulty);
+        }
+        else
+        {
+            GameScoreManager.Instance.ResetStreak();
+        }
         return correct;
     }
 }
