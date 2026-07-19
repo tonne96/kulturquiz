@@ -6,6 +6,7 @@ public class GameScoreManager : MonoBehaviour
 
     public int TotalScore { get; private set; }
     public int CurrentStreak { get; private set; } = 0;
+    public int HighestStreak { get; private set; } = 0;
 
     private void Awake()
     {   
@@ -33,7 +34,7 @@ public class GameScoreManager : MonoBehaviour
             _ => 0
         };
 
-        float multiplier = 1f + (CurrentStreak * 0.1f);
+        float multiplier = 1f + CurrentStreak * 0.1f;
 
         int earnedPoints = Mathf.RoundToInt(basePoints * multiplier);
 
@@ -41,10 +42,14 @@ public class GameScoreManager : MonoBehaviour
 
         CurrentStreak++;
 
+        if (CurrentStreak > HighestStreak)
+            HighestStreak = CurrentStreak;
+
         Debug.Log(
-            $"Correct! +{earnedPoints} points | " +
-            $"Streak: {CurrentStreak} | " +
-            $"Total Score: {TotalScore}");
+            $"Earned {earnedPoints} | " +
+            $"Streak {CurrentStreak} | " +
+            $"Highest {HighestStreak} | " +
+            $"Total {TotalScore}");
     }
 
 
