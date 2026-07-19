@@ -92,6 +92,10 @@ public class QuizManager : MonoBehaviour
             // Adds permanent/game score
             GameScoreManager.Instance.AddQuestionScore(q.difficulty);
         }
+        else
+        {
+            GameScoreManager.Instance.ResetStreak();
+        }
         return correct;
     }
 }

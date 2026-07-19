@@ -5,7 +5,7 @@ public class GameScoreManager : MonoBehaviour
     public static GameScoreManager Instance;
 
     public int TotalScore { get; private set; }
-
+    public int CurrentStreak { get; private set; } = 0;
 
     private void Awake()
     {   
@@ -25,7 +25,7 @@ public class GameScoreManager : MonoBehaviour
 
     public void AddQuestionScore(string difficulty)
     {
-        int points = difficulty switch
+        int basePoints = difficulty switch
         {
             "easy" => 10,
             "medium" => 20,
@@ -33,14 +33,29 @@ public class GameScoreManager : MonoBehaviour
             _ => 0
         };
 
-        TotalScore += points;
+        float multiplier = 1f + (CurrentStreak * 0.1f);
 
-        Debug.Log($"Added {points} points. Total score: {TotalScore}");
+        int earnedPoints = Mathf.RoundToInt(basePoints * multiplier);
+
+        TotalScore += earnedPoints;
+
+        CurrentStreak++;
+
+        Debug.Log(
+            $"Correct! +{earnedPoints} points | " +
+            $"Streak: {CurrentStreak} | " +
+            $"Total Score: {TotalScore}");
     }
 
 
     public void ResetScore()
     {
         TotalScore = 0;
+    }
+
+    public void ResetStreak()
+    {
+        CurrentStreak = 0;
+        Debug.Log("Streak Reset");
     }
 }
