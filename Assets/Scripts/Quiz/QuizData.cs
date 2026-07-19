@@ -16,7 +16,7 @@ public class TriviaQuestion
 {
     public string category;
     public string type;                   // "multiple" oder "boolean"
-    public string difficulty = GameSettings.Difficulty;             // "easy" / "medium" / "hard"
+    public string difficulty;             // "easy" / "medium" / "hard"
     public string question;
     public string correct_answer;
     public string[] incorrect_answers;
