@@ -2683,8 +2683,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.4000015, y: 1.9000015}
-  m_SizeDelta: {x: 9.47328, y: -106.05563}
+  m_AnchoredPosition: {x: -1.1845016, y: -1.3225403}
+  m_SizeDelta: {x: 199.01672, y: -15.19585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662688429
 MonoBehaviour:
@@ -2706,7 +2706,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Foo Bar
+  m_text: "Before starting, you can choose your preferred quiz difficulty in the
+    options menu. The difficulty affects the questions you will receive and the points
+    you can earn.\n\nEach correct answer gives you points based on the question difficulty.
+    Building a streak by answering questions correctly in a row increases your score
+    multiplier. The longer your streak, the more points you earn. Be careful though
+    \u2014 one wrong answer will reset your streak.\n\nTo start a quiz, explore the
+    world and find the NPCs waiting for you. Each NPC offers a different quiz theme.
+    Use the minimap in the bottom-right corner to locate nearby NPCs and discover
+    new challenges.\n\nGood luck, and keep your streak alive!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2733,8 +2741,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
