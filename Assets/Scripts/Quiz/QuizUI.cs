@@ -221,7 +221,7 @@ public class QuizUI : MonoBehaviour
 
         if (endText != null)
             endText.text =
-                $"Fertig!\n{score} / {total} richtig";
+                $"Finished!\n{score} / {total} correct";
     }
 
 

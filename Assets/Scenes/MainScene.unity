@@ -18285,6 +18285,7 @@ GameObject:
   - component: {fileID: 1993763228}
   - component: {fileID: 1993763231}
   - component: {fileID: 1993763232}
+  - component: {fileID: 1993763233}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -18393,6 +18394,18 @@ MonoBehaviour:
   npcColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   playerDotSize: 10
   npcDotSize: 8
+--- !u!114 &1993763233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993763227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47461f0e2f044d80b237d05aa513ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeToMenu
 --- !u!1001 &1993973532
 PrefabInstance:
   m_ObjectHideFlags: 0
