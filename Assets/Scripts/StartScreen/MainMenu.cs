@@ -33,4 +33,10 @@ public class MainMenu : MonoBehaviour
         if (howToPlayPanel != null) howToPlayPanel.SetActive(false);
         if (mainPanel != null) mainPanel.SetActive(true);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && howToPlayPanel != null && howToPlayPanel.activeSelf)
+            Back();
+    }
 }
