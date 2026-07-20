@@ -445,6 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c973df442ce95c64da1042246002dacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  mainPanel: {fileID: 171489932}
+  howToPlayPanel: {fileID: 540395979}
 --- !u!1 &272204307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2533,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532585006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 26.7}
   m_LocalScale: {x: 0.50452125, y: 0.5962523, z: 0.38221306}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2707,14 +2709,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Before starting, you can choose your preferred quiz difficulty in the
-    options menu. The difficulty affects the questions you will receive and the points
-    you can earn.\n\nEach correct answer gives you points based on the question difficulty.
-    Building a streak by answering questions correctly in a row increases your score
-    multiplier. The longer your streak, the more points you earn. Be careful though
-    \u2014 one wrong answer will reset your streak.\n\nTo start a quiz, explore the
-    world and find the NPCs waiting for you. Each NPC offers a different quiz theme.
-    Use the minimap in the bottom-right corner to locate nearby NPCs and discover
-    new challenges.\n\nGood luck, and keep your streak alive!"
+    options menu. \nThe difficulty affects the questions you will receive and the
+    points you can earn.\n\nEach correct answer gives you points based on the question
+    difficulty. \nBuilding a streak by answering questions correctly in a row \nincreases
+    your score multiplier. \nThe longer your streak, the more points you earn. \nBe
+    careful though \u2014 one wrong answer will reset your streak.\n\nTo start a
+    quiz, explore the world and find the NPCs waiting for you. \nEach NPC offers
+    a different quiz theme. \nUse the minimap in the bottom-right corner to locate
+    nearby NPCs \nand discover new challenges.\n\nGood luck, and keep your streak
+    alive!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2741,8 +2744,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
